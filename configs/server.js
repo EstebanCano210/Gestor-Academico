@@ -6,7 +6,11 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js';
-0
+import studentRoutes from "../src/Students/student.routes.js";
+import teacherRoutes from "../src/Teachers/teacher.routes.js";
+import courseRoutes from "../src/Courses/course.routes.js";
+import authRoutes  from "../src/auth/auth.routes.js"
+
 
 
 const middlewares = (app) => {
@@ -19,7 +23,10 @@ const middlewares = (app) => {
 }
 
 const routes = (app) =>{
-
+    app.use("/educationSystem/v1/auth", authRoutes);
+    app.use("/educationSystem/v1/students", studentRoutes);
+    app.use("/educationSystem/v1/teachers", teacherRoutes);
+    app.use("/educationSystem/v1/courses", courseRoutes);
 }
 
 const conectarDB = async () => {
