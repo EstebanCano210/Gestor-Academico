@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js';
-0
+import authRoutes  from "../src/auth/auth.routes.js"
 
 
 const middlewares = (app) => {
@@ -19,7 +19,7 @@ const middlewares = (app) => {
 }
 
 const routes = (app) =>{
-
+    app.use("/educationSystem/v1/auth", authRoutes);
 }
 
 const conectarDB = async () => {
